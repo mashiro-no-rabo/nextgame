@@ -24,7 +24,7 @@ pub fn team_response(team: &Team, key: &str, game: Option<Game>) -> TeamPageResp
 pub fn make_new_game(team: &Team, description: String) -> Game {
     Game {
         description,
-        players: HashMap::new(),
+        players: team.players.keys().map(|k| (k.clone(), None)).collect(),
         guests: Vec::new(),
         comments: Vec::new(),
         date: team.weekly_schedule.map(|w| {
@@ -540,6 +540,17 @@ mod tests {
         assert_eq!(game.squads.get("s1"), Some(&"Alpha".into()));
         assert!(game.squad_assignments.is_empty());
         assert!(!game.is_game_off);
+    }
+
+    #[test]
+    fn make_new_game_includes_team_players() {
+        let mut team = make_team("T");
+        team.players.insert("p1".into(), "Alice".into());
+        team.players.insert("p2".into(), "Bob".into());
+        let game = make_new_game(&team, String::new());
+        assert_eq!(game.players.len(), 2);
+        assert_eq!(game.players.get("p1"), Some(&None));
+        assert_eq!(game.players.get("p2"), Some(&None));
     }
 
     #[test]
