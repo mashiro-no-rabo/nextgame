@@ -17,7 +17,7 @@ console_error_panic_hook = "0.1"
 serde = { version = "1", features = ["derive"] }
 serde_json = "*"
 getrandom = { version = "0.4", features = ["wasm_js"] }
-sha3 = { version = "0.10", default-features = false }
+sha3 = { version = "0.11", default-features = false }
 hex = { version = "0.4" }
 jiff = { version = "0.2", features = ["js", "serde"] }
 
