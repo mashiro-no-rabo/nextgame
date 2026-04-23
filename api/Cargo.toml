@@ -11,7 +11,7 @@ edition = "2024"
 crate-type = ["cdylib"]
 
 [dependencies]
-worker = "0.7"
+worker = "0.8"
 worker-kv = "*"
 console_error_panic_hook = "0.1"
 serde = { version = "1", features = ["derive"] }
