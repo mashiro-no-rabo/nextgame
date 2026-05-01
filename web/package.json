@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@solidjs/router": "^0.16.1",
-    "marked": "^17.0.5",
+    "marked": "^18.0.2",
     "solid-js": "^1.9.5"
   },
   "pnpm": {
